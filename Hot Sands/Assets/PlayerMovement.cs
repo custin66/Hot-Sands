@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private int forwardSpeed;
 
-    // Update is called once per frame
+    [SerializeField]
+    private int sideSpeed;
+
+
     void Update()
     {
-        
+        MovingForward();
+        SideMovingControls();
+    }
+    void MovingForward()
+    {
+        transform.position += Vector3.forward * forwardSpeed*Time.deltaTime;
+    }
+
+    void SideMovingControls()
+    {
+        transform.position += new Vector3(Input.GetAxis("Horizontal") * sideSpeed*Time.deltaTime, 0f, 0f);
     }
 }
